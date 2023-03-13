@@ -11,7 +11,7 @@
 	<groupId>com.nnenna</groupId>
 	<artifactId>receiver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>receiver</name>
+	<name>receiver_service</name>
 	<description>Demo project for Spring Boot for ks8</description>
 	<properties>
 		<java.version>11</java.version>
@@ -61,6 +61,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>ReceiverService</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -73,6 +74,20 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.38.1</version>
+				<executions>
+					<execution>
+						<id>build</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

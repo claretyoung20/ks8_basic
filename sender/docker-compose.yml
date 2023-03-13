@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  sender:
+    ports:
+      - 8070:8070
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      - MYSQL_HOST=${MYSQL_HOST}
+      - MYSQL_USERNAME=${MYSQL_USERNAME}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - RMQ_HOST=${RMQ_HOST}
+      - RMQ_USERNAME=${RMQ_USERNAME}
+      - RMQ_PASSWORD=${RMQ_PASSWORD}
+      - RECEIVER_HOST=${RECEIVER_HOST}
