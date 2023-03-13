@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: senserdb
+  namespace: alert-service
+  labels:
+    app: sender-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sender-db
+  template:
+    metadata:
+      labels:
+        app: sender-db
+    spec:
+      containers:
+      - name: mysql
+        image: mysql
+        ports:
+        - containerPort: 3306
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: secrets
+                key: mysql-password
+

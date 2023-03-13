@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: receiverservice
+  namespace: alert-service
+  labels:
+    app: receiver-service
+spec:
+  selector:
+    app: receiver-service
+  ports:
+  - port: 8071
+    targetPort: 8071

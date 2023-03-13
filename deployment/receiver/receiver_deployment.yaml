@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: receiver
+  namespace: alert-service
+  labels:
+    app: receiver-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: receiver-service
+  template:
+    metadata:
+      labels:
+        app: receiver-service
+    spec:
+      containers:
+      - name: receiver
+        image: claretyoung/receiver
+        ports:
+        - containerPort: 8071
+        env:
+        - name: PG_HOST
+          value: pgservice
+        - name: PG_USERNAME
+          value: root
+        - name: PG_PASSWORD
+          value: root
+        - name: RMQ_HOST
+          value: rmqmessage
+        - name: RMQ_USERNAME
+          value: guest
+        - name: RMQ_PASSWORD
+          value: guest

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sender
+  namespace: alert-service
+  labels:
+    app: sender-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sender-service
+  template:
+    metadata:
+      labels:
+        app: sender-service
+    spec:
+      containers:
+      - name: sender
+        image: claretyoung/sender
+        ports:
+        - containerPort: 8070
+        env:
+        - name: MYSQL_HOST
+          value: msqlservice
+        - name: MYSQL_USERNAME
+          value: root
+        - name: MYSQL_PASSWORD
+          value: password123
+        - name: RMQ_HOST
+          value: rmqmessage
+        - name: RMQ_USERNAME
+          value: guest
+        - name: RMQ_PASSWORD
+          value: guest
+        - name: RECEIVER_HOST
+          value: receiverservice

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: msqlservice
+  namespace: alert-service
+  labels:
+    app: sender-db
+spec:
+  selector:
+    app: sender-db
+  ports:
+  - port: 3306
+    targetPort: 3306

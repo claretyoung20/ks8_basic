@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rmq
+  namespace: alert-service
+  labels:
+    app: rmq-message
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rmq-message
+  template:
+    metadata:
+      labels:
+        app: rmq-message
+    spec:
+      containers:
+      - name: rabbitmq
+        image: rabbitmq:3.11-management
+        ports:
+        - containerPort: 15672
