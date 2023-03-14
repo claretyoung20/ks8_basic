@@ -44,4 +44,3 @@ sender/!**/src/test/**/target/
 sender/.idea
 
 .DS_Store
-deployment/secrets.yaml
