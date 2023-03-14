@@ -22,14 +22,32 @@ spec:
         - containerPort: 8071
         env:
         - name: PG_HOST
-          value: pgservice
+          valueFrom:
+            secretKeyRef:
+              name: secrets
+              key: pg-host
         - name: PG_USERNAME
-          value: root
+          valueFrom:
+            secretKeyRef:
+              name: secrets
+              key: pg-username
         - name: PG_PASSWORD
-          value: root
+          valueFrom:
+            secretKeyRef:
+              name: secrets
+              key: pg-password
         - name: RMQ_HOST
-          value: rmqmessage
+          valueFrom:
+            secretKeyRef:
+              name: secrets
+              key: rmq-host
         - name: RMQ_USERNAME
-          value: guest
+          valueFrom:
+            secretKeyRef:
+              name: secrets
+              key: rmq-username
         - name: RMQ_PASSWORD
-          value: guest
+          valueFrom:
+            secretKeyRef:
+              name: secrets
+              key: rmq-password

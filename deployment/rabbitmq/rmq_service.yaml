@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: rmqmessage
+  name: rmqservice
   namespace: alert-service
   labels:
     app: rmq-message
@@ -10,4 +10,4 @@ spec:
     app: rmq-message
   ports:
   - port: 5672
-    targetPort: 15672
+    targetPort: 5672
